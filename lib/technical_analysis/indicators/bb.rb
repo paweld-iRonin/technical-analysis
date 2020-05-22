@@ -71,8 +71,8 @@ module TechnicalAnalysis
         if period_values.size == period
           mb = ArrayHelper.average(period_values)
           sd = ArrayHelper.standard_deviation(period_values)
-          ub = mb + standard_deviations * sd
-          lb = mb - standard_deviations * sd
+          ub = mb + standard_deviations * 2#sd
+          lb = mb - standard_deviations * 2#sd
 
           output << BbValue.new(
             date_time: v[:date_time],
