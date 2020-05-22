@@ -49,7 +49,7 @@ module TechnicalAnalysis
     # @param period [Integer] The given period to calculate the KC
     #
     # @return [Array<KcValue>] An array of KcValue instances
-    def self.calculate(data, period: 10)
+    def self.calculate(data, period: 10, multiplier: 1)
       period = period.to_i
       Validation.validate_numeric_data(data, :high, :low, :close)
       Validation.validate_length(data, min_data_size(period: period))
@@ -69,8 +69,8 @@ module TechnicalAnalysis
           mb = ArrayHelper.average(period_values.map { |pv| pv[:typical_price] })
 
           trading_range_average = ArrayHelper.average(period_values.map { |pv| pv[:trading_range] })
-          ub = mb + trading_range_average
-          lb = mb - trading_range_average
+          ub = mb + trading_range_average * multiplier
+          lb = mb - trading_range_average * multiplier
 
           output << KcValue.new(
             date_time: v[:date_time],
