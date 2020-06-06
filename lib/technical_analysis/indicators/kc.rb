@@ -70,6 +70,7 @@ module TechnicalAnalysis
           mb = ArrayHelper.average(data.map { |d| d[:close] }).round(3)
 
           trading_range_average = ArrayHelper.average(period_values.map { |pv| pv[:trading_range] })
+          binding.pry
           ub = mb + trading_range_average * multiplier
           lb = mb - trading_range_average * multiplier
 
