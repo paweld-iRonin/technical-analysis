@@ -55,7 +55,7 @@ module TechnicalAnalysis
       Validation.validate_length(data, min_data_size(period: period))
       Validation.validate_date_time_key(data)
 
-      data = data.sort_by { |row| row[:date_time] }
+      data = data.last(period).sort_by { |row| row[:date_time] }
 
       output = []
       period_values = []
@@ -69,8 +69,12 @@ module TechnicalAnalysis
           # mb = ArrayHelper.average(period_values.map { |pv| pv[:typical_price] })
           mb = ArrayHelper.average(data.map { |d| d[:close] }).round(3)
 
-          trading_range_average = ArrayHelper.average(period_values.map { |pv| pv[:trading_range] })
-          binding.pry
+          if data.size < (period + 1)
+            trading_range_average = ArrayHelper.average(period_values.map { |pv| pv[:trading_range] })
+          else
+            trading_range_average = TechnicalAnalysis::Atr.calculate(data, period: period).first.atr.round(3)
+          end
+
           ub = mb + trading_range_average * multiplier
           lb = mb - trading_range_average * multiplier
 
