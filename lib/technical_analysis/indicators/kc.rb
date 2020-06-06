@@ -69,9 +69,9 @@ module TechnicalAnalysis
           # mb = ArrayHelper.average(period_values.map { |pv| pv[:typical_price] })
           mb = ArrayHelper.average(data.map { |d| d[:close] }).round(3)
           
-          trading_range_average = ArrayHelper.average(period_values.map { |pv| pv[:trading_range] })
-          # NOT WORKING: trading_range_average = TechnicalAnalysis::Atr.calculate(data, period: period).first.atr.round(3)
-          binding.pry
+          # trading_range_average = ArrayHelper.average(period_values.map { |pv| pv[:trading_range] })
+          trading_range_average = TechnicalAnalysis::Atr.calculate(initial_data, period: period).first.atr.round(3)
+
           ub = mb + trading_range_average * multiplier
           lb = mb - trading_range_average * multiplier
 
