@@ -1,3 +1,5 @@
+require 'descriptive_statistics/safe'
+
 module TechnicalAnalysis
   # Bollinger Bands
   class Bb < Indicator
@@ -72,6 +74,7 @@ module TechnicalAnalysis
           mb = ArrayHelper.average(period_values).round(3)
           # sd = ArrayHelper.standard_deviation(period_values)
           # use descriptive_statistics gem
+          period_values.extend(DescriptiveStatistics)
           sd = period_values.standard_deviation.round(3)
           ub = mb + standard_deviations * sd
           lb = mb - standard_deviations * sd
