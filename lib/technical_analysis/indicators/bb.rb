@@ -70,11 +70,10 @@ module TechnicalAnalysis
 
         if period_values.size == period
           mb = ArrayHelper.average(period_values).round(3)
-          # Follow the same logic as trading view script is using, 2 is hardcoded there
-          sd = 2 # ArrayHelper.standard_deviation(period_values)
+          sd = ArrayHelper.standard_deviation(period_values)
           ub = mb + standard_deviations * sd
           lb = mb - standard_deviations * sd
-
+          binding.pry
           output << BbValue.new(
             date_time: v[:date_time],
             lower_band: lb,
