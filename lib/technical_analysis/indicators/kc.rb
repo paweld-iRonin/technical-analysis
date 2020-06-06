@@ -68,6 +68,7 @@ module TechnicalAnalysis
         if period_values.size == period
           # mb = ArrayHelper.average(period_values.map { |pv| pv[:typical_price] })
           # use descriptive_statistics gem
+          binding.pry
           mb = period_values.standard_deviation.round(3)
           trading_range_average = ArrayHelper.average(period_values.map { |pv| pv[:trading_range] })
           ub = mb + trading_range_average * multiplier
