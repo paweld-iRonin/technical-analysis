@@ -74,7 +74,7 @@ module TechnicalAnalysis
           else
             trading_range_average = TechnicalAnalysis::Atr.calculate(data, period: period).first.atr.round(3)
           end
-
+          binding.pry
           ub = mb + trading_range_average * multiplier
           lb = mb - trading_range_average * multiplier
 
