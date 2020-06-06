@@ -72,7 +72,7 @@ module TechnicalAnalysis
           trading_range_average = ArrayHelper.average(period_values.map { |pv| pv[:trading_range] })
           ub = mb + trading_range_average * multiplier
           lb = mb - trading_range_average * multiplier
-
+          binding.pry
           output << KcValue.new(
             date_time: v[:date_time],
             lower_band: lb,
