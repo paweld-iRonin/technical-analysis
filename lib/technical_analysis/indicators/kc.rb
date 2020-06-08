@@ -71,7 +71,7 @@ module TechnicalAnalysis
           
           # trading_range_average = ArrayHelper.average(period_values.map { |pv| pv[:trading_range] })
           trading_range_average = TechnicalAnalysis::Atr.calculate(initial_data, period: period).first.atr.round(3)
-
+          binding.pry
           ub = mb + trading_range_average * multiplier
           lb = mb - trading_range_average * multiplier
 
