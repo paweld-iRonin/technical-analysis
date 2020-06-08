@@ -71,14 +71,14 @@ module TechnicalAnalysis
         period_values << v[price_key]
 
         if period_values.size == period
-          mb = ArrayHelper.average(period_values).round(3)
+          mb = ArrayHelper.average(period_values)
           # sd = ArrayHelper.standard_deviation(period_values)
           # use descriptive_statistics gem
           period_values.extend(DescriptiveStatistics)
-          sd = period_values.standard_deviation.round(3)
+          sd = period_values.standard_deviation
           ub = mb + standard_deviations * sd
           lb = mb - standard_deviations * sd
-          binding.pry
+
           output << BbValue.new(
             date_time: v[:date_time],
             lower_band: lb,
