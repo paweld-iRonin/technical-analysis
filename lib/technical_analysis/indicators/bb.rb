@@ -78,7 +78,7 @@ module TechnicalAnalysis
           sd = period_values.standard_deviation
           ub = mb + standard_deviations * sd
           lb = mb - standard_deviations * sd
-          binding.pry
+
           output << BbValue.new(
             date_time: v[:date_time],
             lower_band: lb,
