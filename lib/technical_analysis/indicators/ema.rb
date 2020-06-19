@@ -38,7 +38,7 @@ module TechnicalAnalysis
     #
     # @return [Integer] Returns the minimum number of observations needed to calculate the technical
     #    indicator based on the options provided
-    def self.min_data_size(period: 30, **params)
+    def self.min_data_size(period: 8, **params)
       period.to_i
     end
 
