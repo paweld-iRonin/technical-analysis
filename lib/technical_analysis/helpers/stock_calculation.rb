@@ -14,6 +14,7 @@ module TechnicalAnalysis
     end
 
     def self.ema(current_value, data, period, prev_value)
+      binding.pry
       if prev_value.nil?
         ArrayHelper.average(data)
       else
