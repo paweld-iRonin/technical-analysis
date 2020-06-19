@@ -16,7 +16,7 @@ module TechnicalAnalysis
     def self.ema(current_value, data, period, prev_value)
       if prev_value.nil?
         #ArrayHelper.average(data)
-        binding.pry
+        current_value
       else
         (current_value - prev_value) * (2.0 / (period + 1.0)) + prev_value
       end
