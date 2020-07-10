@@ -76,6 +76,7 @@ module TechnicalAnalysis
           # use descriptive_statistics gem
           period_values.extend(DescriptiveStatistics)
           sd = period_values.standard_deviation
+          binding.pry
           ub = mb + standard_deviations * sd
           lb = mb - standard_deviations * sd
 
