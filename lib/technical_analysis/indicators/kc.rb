@@ -74,7 +74,7 @@ module TechnicalAnalysis
 
           ub = mb + trading_range_average * multiplier
           lb = mb - trading_range_average * multiplier
-          binding.pry
+
           output << KcValue.new(
             date_time: v[:date_time],
             lower_band: lb,
